@@ -89,13 +89,13 @@ stages:
       size: 48
     - path: src/models/train_model.py
       hash: md5
-      md5: c202355770a832cc4696ddd11dc4c56f
-      size: 1257
+      md5: 98af50c677754ac9eafcd1bab3870671
+      size: 1285
     outs:
     - path: models/regressor_model.pkl
       hash: md5
-      md5: 806b8e18967f282d638d95a6350b3a5b
-      size: 15490033
+      md5: de20daa6092cbde46f51da6a63484ba7
+      size: 15464175
   evaluate_model:
     cmd: python3 src/models/evaluate_model.py
     deps:
@@ -109,8 +109,8 @@ stages:
       size: 3040
     - path: models/regressor_model.pkl
       hash: md5
-      md5: 806b8e18967f282d638d95a6350b3a5b
-      size: 15490033
+      md5: de20daa6092cbde46f51da6a63484ba7
+      size: 15464175
     - path: src/models/evaluate_model.py
       hash: md5
       md5: a343972017767b5fac57ee215b613024

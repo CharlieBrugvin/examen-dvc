@@ -40,4 +40,5 @@ rf_reg.fit(X_train_scaled, y_train)
 # Saving model
 
 logging.info("Saving regressor to '%s'", OUTPUT_MODEL_FILE)
-joblib.dump(rf_reg, OUTPUT_MODEL_FILE);
+with open(OUTPUT_MODEL_FILE, "wb") as f:
+    pickle.dump(rf_reg, f)
