@@ -15,12 +15,9 @@ logging.basicConfig(level=logging.INFO)
 
 
 INPUT_DATA_FOLDER = Path("data/processed_data")
-# PARAM_GRID = {
-#     'n_estimators': [100, 200, 300, 400],
-#     'max_depth': [None, 10, 20, 30, 40],
-# }
 PARAM_GRID = {
-    'n_estimators': [300],
+    'n_estimators': [100, 200, 300, 400],
+    'max_depth': [None, 10, 20, 30, 40],
 }
 OUTPUT_PARAM_FILE = Path("models/best_parameters.pkl")
 
@@ -29,12 +26,10 @@ OUTPUT_PARAM_FILE = Path("models/best_parameters.pkl")
 logging.info("Loading the 4 subsets from : '%s'", INPUT_DATA_FOLDER)
 
 X_train_scaled = np.load(INPUT_DATA_FOLDER / "X_train_scaled.npy")
-X_test_scaled = np.load(INPUT_DATA_FOLDER / "X_test_scaled.npy")
 y_train = np.load(INPUT_DATA_FOLDER / "y_train.npy")
-y_test = np.load(INPUT_DATA_FOLDER / "y_test.npy")
 
-logging.info("Shapes: X_train_scaled=%s X_test_scaled=%s y_train=%s y_test=%s", 
-             X_train_scaled.shape, X_test_scaled.shape, y_train.shape, y_test.shape)
+logging.info("Shapes: X_train_scaled=%s y_train=%s", 
+             X_train_scaled.shape, y_train.shape)
 
 # Model initialization and grid search
 

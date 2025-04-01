@@ -43,10 +43,13 @@ r2 = r2_score(y_test, y_test_pred)
 
 logging.info(f"MAE={mae:.3f}, MSE={mse:.3f}, R²={r2:.3f}")
 
-# saving metrics in a json file
+# saving predictions and metrics
+
+pred_filepath = OUTPUT_DATA_FOLDER / "y_test_pred.npy"
+logging.info("Saving predictions to '%s'", pred_filepath)
+np.save(pred_filepath, y_test_pred)
 
 logging.info("Saving metrics to '%s'", OUTPUT_METRIC_FILE)
-
 OUTPUT_METRIC_FILE.write_text(
             json.dumps(
                 {"mae": mae, "mse": mse, "r2": r2}, 

@@ -1,0 +1,54 @@
+stages:
+
+  split_data:
+    cmd: python3 src/data/split_data.py
+    deps:
+    - src/data/split_data.py
+    - data/raw_data/raw.csv
+    outs:
+    - data/processed_data/X_test.npy
+    - data/processed_data/X_train.npy
+    - data/processed_data/y_test.npy
+    - data/processed_data/y_train.npy
+
+  normalize_data:
+    cmd: python3 src/data/normalize_data.py
+    deps:
+    - src/data/normalize_data.py
+    - data/processed_data/X_test.npy
+    - data/processed_data/X_train.npy
+    outs:
+    - data/processed_data/X_test_scaled.npy
+    - data/processed_data/X_train_scaled.npy
+
+  grid_search:
+    cmd: python3 src/models/grid_search.py
+    deps:
+    - src/models/grid_search.py
+    - data/processed_data/X_train_scaled.npy
+    - data/processed_data/y_train.npy
+    outs:
+    - models/best_parameters.pkl
+
+  train_model:
+    cmd: python3 src/models/train_model.py
+    deps:
+    - src/models/train_model.py
+    - data/processed_data/X_train_scaled.npy
+    - data/processed_data/y_train.npy
+    - models/best_parameters.pkl
+    outs:
+    - models/regressor_model.pkl
+
+  evaluate_model:
+    cmd: python3 src/models/evaluate_model.py
+    deps:
+    - src/models/evaluate_model.py
+    - data/processed_data/X_test_scaled.npy
+    - data/processed_data/y_test.npy
+    - models/regressor_model.pkl
+    outs:
+    - data/processed_data/y_test_pred.npy
+    metrics:
+    - metrics/scores.json:
+        cache: false

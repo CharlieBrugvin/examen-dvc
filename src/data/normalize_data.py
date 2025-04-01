@@ -18,15 +18,13 @@ OUTPUT_DATA_FOLDER = Path("data/processed_data")
 
 # Loading data
 
-logging.info("Loading the 4 subsets from : '%s'", INPUT_DATA_FOLDER)
+logging.info("Loading X_train & X_test from : '%s'", INPUT_DATA_FOLDER)
 
 X_train = np.load(INPUT_DATA_FOLDER / "X_train.npy")
 X_test = np.load(INPUT_DATA_FOLDER / "X_test.npy")
-y_train = np.load(INPUT_DATA_FOLDER / "y_train.npy")
-y_test = np.load(INPUT_DATA_FOLDER / "y_test.npy")
 
-logging.info("Shapes: X_train=%s X_test=%s y_train=%s y_test=%s", 
-             X_train.shape, X_test.shape, y_train.shape, y_test.shape)
+logging.info("Shapes: X_train=%s X_test=%s", 
+             X_train.shape, X_test.shape)
 
 # Normalization
 
@@ -40,5 +38,5 @@ X_test_scaled = X_scaler.transform(X_test)
 # Saving data
 
 logging.info("Saving X_train_scaled & X_test_scaled into : '%s'", OUTPUT_DATA_FOLDER)
-np.save(OUTPUT_DATA_FOLDER / "X_train_scaled", X_train_scaled)
-np.save(OUTPUT_DATA_FOLDER / "X_test_scaled", X_test_scaled)
+np.save(OUTPUT_DATA_FOLDER / "X_train_scaled.npy", X_train_scaled)
+np.save(OUTPUT_DATA_FOLDER / "X_test_scaled.npy", X_test_scaled)

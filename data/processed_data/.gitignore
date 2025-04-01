@@ -1,4 +1,8 @@
-/X_train.csv
-/X_test.csv
-/y_train.csv
-/y_test.csv
+/X_train_scaled.npy
+/X_test_scaled.npy
+/X_test.npy
+/X_train.npy
+/y_test.npy
+/y_train.npy
+/y_test_pred
+/y_test_pred.npy

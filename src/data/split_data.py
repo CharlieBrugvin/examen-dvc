@@ -46,7 +46,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 # Saving
 
 logging.info("Saving the 4 subsets into : '%s'", OUTPUT_FOLDER)
-np.save(OUTPUT_FOLDER / "X_train", X_train)
-np.save(OUTPUT_FOLDER / "X_test", X_test)
-np.save(OUTPUT_FOLDER / "y_train", y_train)
-np.save(OUTPUT_FOLDER / "y_test", y_test)
+np.save(OUTPUT_FOLDER / "X_train.npy", X_train)
+np.save(OUTPUT_FOLDER / "X_test.npy", X_test)
+np.save(OUTPUT_FOLDER / "y_train.npy", y_train)
+np.save(OUTPUT_FOLDER / "y_test.npy", y_test)
